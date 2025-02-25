@@ -1,0 +1,12 @@
+---
+### requirements.txt
+```
+
+plaintext
+python-dotenv
+ccxt
+telethon
+beautifulsoup4
+selenium
+tweepy
+requests

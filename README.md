@@ -1,0 +1,77 @@
+# Crypto Listing Announcement Bot
+
+## Overview
+
+This project is a Python-based cryptocurrency listing announcement tracker and automated trading system. It monitors listing announcements from multiple sources—including Binance, Kraken, and Coinbase (via Twitter)—and, upon detecting new listings, executes trades on Gate.io using the [ccxt](https://github.com/ccxt/ccxt) library. In addition, it monitors Telegram channels for additional announcements and sends notifications using a custom notifier module.
+
+The system is built with asynchronous concurrency using Python's `asyncio` framework and is organized into separate modules for improved maintainability.
+
+---
+
+## Features
+
+- **Multi-Source Announcement Tracking**
+  - **Binance:** Uses Selenium to scrape the official Binance listing announcements page.
+  - **Kraken:** Uses Selenium to scrape the Kraken blog category for asset listings.
+  - **Coinbase (Twitter):** Uses Tweepy (with a bearer token) to track tweets from Coinbase accounts (@coinbaseassets for roadmap and @CoinbaseSupport for support), storing events in a local SQLite database.
+  - **Telegram Monitoring:** Uses Telethon to monitor specified Telegram channels for announcements.
+
+- **Automated Trade Execution**
+  - Executes market orders on Gate.io via the ccxt library when new listings are detected.
+  - Prevents duplicate trade execution using global processed sets.
+
+- **Asynchronous Concurrency**
+  - All components (web scraping, tweet tracking, and Telegram monitoring) run concurrently using `asyncio.gather()`.
+
+- **Logging & Notification**
+  - Detailed logs are written to the `/logs` folder.
+  - Notifier module sends messages via the Telegram Bot API.
+
+- **Configuration**
+  - Uses a `.env` file for storing API keys and sensitive configuration parameters.
+
+---
+
+## Folder Structure
+
+project_root/
+├── .env
+├── README.md
+├── requirements.txt
+├── algo.py
+├── notifier/
+│   ├── __init__.py
+│   └── notifier.py
+├── scrapers/
+│   ├── __init__.py
+│   ├── binance.py
+│   └── kraken.py
+├── twitter/
+│   ├── __init__.py
+│   └── coinbase.py
+└── telegram/
+    ├── __init__.py
+    └── monitor.py
+
+
+---
+
+## Setup & Installation
+
+### 1. Clone the Repository
+
+```
+
+bash
+git clone <repository_url>
+cd project_root
+
+
+## Create a Virtual Environment & Install Dependencies
+
+python -m venv venv
+source venv/bin/activate   # On Windows: venv\Scripts\activate
+pip install --upgrade pip
+pip install -r requirements.txt
+
+## Configure Environment Variables
