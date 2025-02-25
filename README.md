@@ -60,18 +60,37 @@ project_root/
 
 ### 1. Clone the Repository
 
-```
-
 bash
 git clone <repository_url>
 cd project_root
 
 
-## Create a Virtual Environment & Install Dependencies
+### 2. Create a Virtual Environment & Install Dependencies
 
 python -m venv venv
 source venv/bin/activate   # On Windows: venv\Scripts\activate
 pip install --upgrade pip
 pip install -r requirements.txt
 
-## Configure Environment Variables
+
+### 3. Configure Environment Variables
+
+Create a .env files with the following:
+
+TELEGRAM_API_ID=
+TELEGRAM_API_HASH=
+TELEGRAM_PHONE=
+
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_CHAT_ID= 
+
+
+GATE_IO_API_KEY=
+GATE_IO_SECRET_KEY=
+
+
+TWITTER_API_KEY=
+TWITTER_API_SECRET=
+TWITTER_BEARER_TOKEN=
+
+---
