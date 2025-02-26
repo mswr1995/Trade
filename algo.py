@@ -160,7 +160,7 @@ async def periodic_fetch_coinbase_tweets():
             await asyncio.to_thread(monitor_tweets, twitter_client_api)
         except Exception as e:
             logging.error(f"Error in Coinbase tweet tracking: {e}")
-        await asyncio.sleep(300)
+        await asyncio.sleep(900)
 
 # Trade execution function.
 def execute_trade(symbol):
